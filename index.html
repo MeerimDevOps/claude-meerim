@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Branding Expert | Elevate Your Online Presence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBeige: '#F5F5DC',
+                        brandGreen: '#2D5A27',
+                        brandGold: '#D4AF37',
+                        brandBlack: '#000000',
+                        brandWhite: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F5F5DC;
+            color: #000000;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-brandBeige text-brandBlack">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-brandBeige/90 backdrop-blur-md border-b border-brandGold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0">
+                    <span class="text-2xl font-bold tracking-widest text-brandGreen">MEERIM</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-brandGold transition-colors">Home</a>
+                        <a href="#about" class="hover:text-brandGold transition-colors">About</a>
+                        <a href="#services" class="hover:text-brandGold transition-colors">Services</a>
+                        <a href="#portfolio" class="hover:text-brandGold transition-colors">Portfolio</a>
+                        <a href="#testimonials" class="hover:text-brandGold transition-colors">Testimonials</a>
+                        <a href="#contact" class="hover:text-brandGold transition-colors border-2 border-brandGreen px-4 py-2 rounded-full">Contact</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-brandBlack focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brandBeige border-b border-brandGold/20 px-4 pt-2 pb-6 space-y-2">
+            <a href="#home" class="block py-2 hover:text-brandGold transition-colors">Home</a>
+            <a href="#about" class="block py-2 hover:text-brandGold transition-colors">About</a>
+            <a href="#services" class="block py-2 hover:text-brandGold transition-colors">Services</a>
+            <a href="#portfolio" class="block py-2 hover:text-brandGold transition-colors">Portfolio</a>
+            <a href="#testimonials" class="block py-2 hover:text-brandGold transition-colors">Testimonials</a>
+            <a href="#contact" class="block py-2 text-brandGreen font-bold">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 flex items-center min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+                        Elevate Your <span class="text-brandGreen italic">Personal Brand</span> to the Next Level
+                    </h1>
+                    <p class="text-lg mb-8 text-gray-700 max-w-lg">
+                        Empowering entrepreneurs and professionals to build a powerful Instagram presence, craft winning content strategies, and attract high-ticket clients online.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#services" class="bg-brandGreen text-brandWhite px-8 py-4 rounded-full text-center font-semibold hover:bg-black transition-colors">
+                            Start Building Your Brand
+                        </a>
+                        <a href="#contact" class="border-2 border-brandGold text-brandBlack px-8 py-4 rounded-full text-center font-semibold hover:bg-brandGold hover:text-white transition-colors">
+                            Book a Consultation
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-square bg-brandGold/10 rounded-full overflow-hidden border-8 border-brandWhite shadow-2xl">
+                        <!-- Placeholder for Hero Image -->
+                        <div class="w-full h-full bg-brandGreen/20 flex items-center justify-center text-brandGreen italic text-xl">
+                            Elegant Professional Image
+                        </div>
+                    </div>
+                    <!-- Decorative Element -->
+                    <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-brandGreen opacity-20 rounded-full filter blur-3xl -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-brandWhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Personal Branding Expert" class="rounded-lg shadow-xl grayscale hover:grayscale-0 transition duration-500">
+                        <div class="absolute -top-4 -left-4 w-24 h-24 bg-brandGold -z-10 rounded-lg"></div>
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-brandGreen -z-10 rounded-lg"></div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-brandGold uppercase tracking-widest font-semibold mb-4 text-sm">About Me</h2>
+                    <h3 class="text-4xl lg:text-5xl font-bold mb-8 leading-tight text-brandBlack">Helping You Define Your <span class="text-brandGreen italic">Unique Identity</span></h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        With over a decade of experience in digital marketing and personal development, I specialize in helping visionary entrepreneurs build brands that resonate and convert.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        My mission is to empower professionals to step into their authority, showcase their expertise, and build an authentic online presence that attracts the right opportunities.
+                    </p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center space-x-3">
+                            <span class="w-6 h-6 bg-brandGreen/10 flex items-center justify-center rounded-full">
+                                <svg class="w-4 h-4 text-brandGreen" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            </span>
+                            <span class="text-brandBlack font-medium">10+ Years Marketing Experience</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-6 h-6 bg-brandGreen/10 flex items-center justify-center rounded-full">
+                                <svg class="w-4 h-4 text-brandGreen" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            </span>
+                            <span class="text-brandBlack font-medium">500+ Professionals Coached</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-6 h-6 bg-brandGreen/10 flex items-center justify-center rounded-full">
+                                <svg class="w-4 h-4 text-brandGreen" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            </span>
+                            <span class="text-brandBlack font-medium">Proven Content Frameworks</span>
+                        </li>
+                    </ul>
+                    <a href="#services" class="inline-block border-b-2 border-brandGreen text-brandGreen font-bold pb-1 hover:text-brandGold hover:border-brandGold transition-all">Learn more about my methods &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-brandBeige">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-brandGold uppercase tracking-widest font-semibold mb-4 text-sm">Services</h2>
+                <h3 class="text-4xl lg:text-5xl font-bold mb-6 text-brandBlack">How We Can <span class="text-brandGreen italic">Work Together</span></h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">Tailored strategies to help you stand out in a crowded digital landscape.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Instagram Presence -->
+                <div class="bg-brandWhite p-10 rounded-2xl border border-brandGold/10 hover:shadow-2xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-brandGreen/10 flex items-center justify-center rounded-2xl mb-8 group-hover:bg-brandGreen group-hover:text-white transition-colors duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-brandBlack">Instagram Presence</h4>
+                    <p class="text-gray-600 mb-8">Optimize your profile, visual identity, and engagement strategies to build a loyal community.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-8">
+                        <li>• Bio Optimization</li>
+                        <li>• Feed Aesthetic</li>
+                        <li>• Engagement Strategy</li>
+                    </ul>
+                </div>
+
+                <!-- Content Strategy -->
+                <div class="bg-brandWhite p-10 rounded-2xl border border-brandGold/10 hover:shadow-2xl transition-all duration-300 group scale-105 border-2 border-brandGold/30">
+                    <div class="w-16 h-16 bg-brandGreen/10 flex items-center justify-center rounded-2xl mb-8 group-hover:bg-brandGreen group-hover:text-white transition-colors duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-brandBlack">Content Strategy</h4>
+                    <p class="text-gray-600 mb-8">Create high-converting content that positions you as an authority and speaks to your ideal client.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-8">
+                        <li>• Content Pillar Mapping</li>
+                        <li>• Reels & Video Mastery</li>
+                        <li>• Copywriting for Sales</li>
+                    </ul>
+                </div>
+
+                <!-- Client Attraction -->
+                <div class="bg-brandWhite p-10 rounded-2xl border border-brandGold/10 hover:shadow-2xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-brandGreen/10 flex items-center justify-center rounded-2xl mb-8 group-hover:bg-brandGreen group-hover:text-white transition-colors duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-brandBlack">Client Attraction</h4>
+                    <p class="text-gray-600 mb-8">Master the art of online networking and sales funnels to attract and close premium clients.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-8">
+                        <li>• DM Sales Framework</li>
+                        <li>• Lead Magnet Design</li>
+                        <li>• Funnel Optimization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="#contact" class="inline-block bg-brandGreen text-brandWhite px-10 py-5 rounded-full font-bold hover:bg-brandBlack transition-colors shadow-lg">
+                    Book a Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-brandWhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <h2 class="text-brandGold uppercase tracking-widest font-semibold mb-4 text-sm">Portfolio</h2>
+                    <h3 class="text-4xl lg:text-5xl font-bold text-brandBlack">Recent Success <span class="text-brandGreen italic">Stories</span></h3>
+                </div>
+                <div class="mt-8 md:mt-0">
+                    <p class="text-gray-600 max-w-md">Take a look at how we've helped our clients transform their digital presence and reach their business goals.</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Brand Strategy" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brandBlack/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <span class="text-brandGold text-sm font-semibold mb-2">Content Strategy</span>
+                        <h4 class="text-white text-xl font-bold mb-4">The Creative Collective</h4>
+                        <p class="text-gray-300 text-sm mb-4">Increased Instagram engagement by 250% in just 3 months through targeted content pillars.</p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Fashion Brand" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brandBlack/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <span class="text-brandGold text-sm font-semibold mb-2">Personal Branding</span>
+                        <h4 class="text-white text-xl font-bold mb-4">Sarah Jenkins Studio</h4>
+                        <p class="text-gray-300 text-sm mb-4">Redefined visual identity resulting in a 40% increase in high-ticket client inquiries.</p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tech Startup" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brandBlack/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <span class="text-brandGold text-sm font-semibold mb-2">Client Attraction</span>
+                        <h4 class="text-white text-xl font-bold mb-4">TechPulse Innovations</h4>
+                        <p class="text-gray-300 text-sm mb-4">Implemented an automated lead generation funnel generating $50k in first-month sales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-brandBeige relative overflow-hidden">
+        <!-- Decorative Background -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+            <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 C 20 0 50 0 100 100 Z" fill="brandGreen"></path>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-brandGold uppercase tracking-widest font-semibold mb-4 text-sm">Testimonials</h2>
+                <h3 class="text-4xl lg:text-5xl font-bold text-brandBlack">What Our <span class="text-brandGreen italic">Clients Say</span></h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Testimonial 1 -->
+                <div class="bg-brandWhite p-12 rounded-3xl shadow-sm border border-brandGold/5 relative">
+                    <div class="text-brandGold mb-6">
+                        <svg class="w-10 h-10 opacity-20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C14.9124 8 14.017 7.10457 14.017 6V3L21.017 3V15C21.017 18.3137 18.3307 21 15.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017C8.56928 16 9.017 15.5523 9.017 15V9C9.017 8.44772 8.56928 8 8.017 8H5.017C3.91243 8 3.017 7.10457 3.017 6V3L10.017 3V15C10.017 18.3137 7.33072 21 4.017 21H3.017Z" />
+                        </svg>
+                    </div>
+                    <p class="text-lg text-gray-700 italic mb-8 leading-relaxed">
+                        "Working with Meerim completely transformed my approach to Instagram. Not only did my followers grow, but I started attracting clients who actually value my work and are ready to invest."
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-brandGreen/20 rounded-full"></div>
+                        <div>
+                            <h5 class="font-bold text-brandBlack">Elena Rodriguez</h5>
+                            <p class="text-brandGold text-sm">Interior Designer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-brandWhite p-12 rounded-3xl shadow-sm border border-brandGold/5 relative">
+                    <div class="text-brandGold mb-6">
+                        <svg class="w-10 h-10 opacity-20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C14.9124 8 14.017 7.10457 14.017 6V3L21.017 3V15C21.017 18.3137 18.3307 21 15.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017C8.56928 16 9.017 15.5523 9.017 15V9C9.017 8.44772 8.56928 8 8.017 8H5.017C3.91243 8 3.017 7.10457 3.017 6V3L10.017 3V15C10.017 18.3137 7.33072 21 4.017 21H3.017Z" />
+                        </svg>
+                    </div>
+                    <p class="text-lg text-gray-700 italic mb-8 leading-relaxed">
+                        "The content strategy sessions were a game-changer. I finally feel confident in what I'm posting and have a clear roadmap for my personal brand's growth."
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-brandGreen/20 rounded-full"></div>
+                        <div>
+                            <h5 class="font-bold text-brandBlack">James Thompson</h5>
+                            <p class="text-brandGold text-sm">Tech Consultant</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-brandWhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-brandGold uppercase tracking-widest font-semibold mb-4 text-sm">Contact</h2>
+                    <h3 class="text-4xl lg:text-5xl font-bold mb-8 text-brandBlack">Ready to Build Your <span class="text-brandGreen italic">Empire?</span></h3>
+                    <p class="text-gray-600 mb-12 text-lg">Have a question or ready to start your branding journey? Fill out the form or reach out directly.</p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-brandGreen/10 flex items-center justify-center rounded-full text-brandGreen">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-brandBlack">Email Us</h5>
+                                <p class="text-gray-500">hello@meerimbranding.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-brandGreen/10 flex items-center justify-center rounded-full text-brandGreen">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-brandBlack">Location</h5>
+                                <p class="text-gray-500">Available Globally (Remote)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brandBeige p-10 rounded-3xl">
+                    <form action="#" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-brandBlack mb-2">Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-brandGold/20 focus:outline-none focus:border-brandGreen bg-white" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-brandBlack mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-xl border border-brandGold/20 focus:outline-none focus:border-brandGreen bg-white" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-brandBlack mb-2">Service of Interest</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-brandGold/20 focus:outline-none focus:border-brandGreen bg-white appearance-none">
+                                <option>Instagram Presence</option>
+                                <option>Content Strategy</option>
+                                <option>Client Attraction</option>
+                                <option>Full Branding Package</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-brandBlack mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-brandGold/20 focus:outline-none focus:border-brandGreen bg-white" placeholder="Tell us about your brand..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-brandGreen text-brandWhite py-4 rounded-xl font-bold hover:bg-brandBlack transition-colors shadow-lg">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-brandBlack text-brandWhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center border-b border-white/10 pb-12 mb-12">
+                <div class="mb-8 md:mb-0 text-center md:text-left">
+                    <span class="text-2xl font-bold tracking-widest text-brandGold">MEERIM</span>
+                    <p class="text-gray-400 mt-2 max-w-xs">Building influential personal brands for the modern professional.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-brandGold transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-brandGold transition-colors">LinkedIn</a>
+                    <a href="#" class="hover:text-brandGold transition-colors">TikTok</a>
+                    <a href="#" class="hover:text-brandGold transition-colors">Pinterest</a>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2024 Meerim Branding Agency. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 space-x-6">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
