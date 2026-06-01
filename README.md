@@ -3,7 +3,8 @@
 A modern, professional website for a Personal Branding Expert, designed to help entrepreneurs and professionals build a strong online presence.
 
 ## Features
-- **Modern Design:** Instagram-inspired aesthetic with pink-to-purple gradients.
+- **Modern Design:** Instagram-inspired aesthetic with pink-to-purple gradients (#FF4D8D → #8B5CF6).
+- **Professional Look:** Contemporary design with fully rounded elements and elegant typography.
 - **Responsive:** Fully mobile-friendly layout.
 - **Sections:** Home, About, Services, Portfolio, Testimonials, and Contact.
 - **Call to Actions:** "Start Building Your Brand" and "Book a Consultation" buttons.
