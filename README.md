@@ -26,5 +26,5 @@ Once selected, the site will automatically deploy to:
 - HTML5
 - Tailwind CSS
 - Google Fonts (Playfair Display, Montserrat)
-- Font Awesome (Icons)
+- Custom SVG Icons
 - GitHub Actions (CI/CD)
