@@ -3,10 +3,10 @@
 A modern, professional website for a Personal Branding Expert, designed to help entrepreneurs and professionals build a strong online presence.
 
 ## Features
-- **Modern Design:** Instagram-inspired aesthetic with pink-to-purple gradients (#FF4D8D → #8B5CF6).
-- **Professional Look:** Contemporary design with fully rounded elements and elegant typography.
+- **Modern Design:** Sophisticated palette of beige, green, and gold.
+- **Professional Look:** Contemporary design with elegant typography and responsive layout.
 - **Responsive:** Fully mobile-friendly layout.
-- **Sections:** Home, About, Services, Portfolio, Testimonials, and Contact.
+- **Sections:** Home, Services, Portfolio, Testimonials, and Contact.
 - **Call to Actions:** "Start Building Your Brand" and "Book a Consultation" buttons.
 - **Performance:** Built with Tailwind CSS for fast loading and clean code.
 
@@ -25,6 +25,6 @@ Once selected, the site will automatically deploy to:
 ## Tech Stack
 - HTML5
 - Tailwind CSS
-- Google Fonts (Playfair Display, Montserrat)
+- Google Fonts (Playfair Display, Montserrat, Dancing Script)
 - Custom SVG Icons
 - GitHub Actions (CI/CD)
