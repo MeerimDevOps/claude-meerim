@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: frontend-deployment
+
+spec:
+  replicas: 2
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app: frontend-service
+
+  template:
+    metadata:
+      labels:
+        app: frontend-service
+
+    spec:
+      containers:
+        - name: frontend-container
+          image: 658140043880.dkr.ecr.us-east-2.amazonaws.com/frontend-service:v1
+          ports:
+            - containerPort: 80
+          env:
+            - name: COURSE_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: frontend-config
+                  key: COURSE_API_URL
+            - name: STUDENT_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: frontend-config
+                  key: STUDENT_API_URL
