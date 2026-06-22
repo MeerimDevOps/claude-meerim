@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: student-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: student-service
+
+  template:
+    metadata:
+      labels:
+        app: student-service
+
+    spec:
+      containers:
+      - name: student-container
+
+        image: 658140043880.dkr.ecr.us-east-2.amazonaws.com/student-service:v1
+
+        ports:
+        - containerPort: 3000
