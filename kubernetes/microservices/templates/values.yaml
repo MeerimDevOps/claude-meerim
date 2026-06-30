@@ -1,0 +1,83 @@
+frontend:
+  replicas: 2
+
+  image:
+    repository: 230026708124.dkr.ecr.us-east-2.amazonaws.com/frontend-service
+    tag: v10
+
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+  startupProbe:
+    path: /
+    port: 80
+    failureThreshold: 30
+    periodSeconds: 10
+
+  readinessProbe:
+    path: /
+    port: 80
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+  livenessProbe:
+    path: /
+    port: 80
+    initialDelaySeconds: 30
+    periodSeconds: 20
+    timeoutSeconds: 3
+    failureThreshold: 3
+ postgres:
+
+  replicas: 1
+
+  image:
+    repository: postgres
+    tag: "16"
+
+  database: school
+
+  username: admin
+
+  password: Admin123@
+
+  service:
+    port: 5432
+
+  storage:
+    storageClass: gp3
+    size: 20Gi
+
+  resources:
+
+    requests:
+      cpu: 500m
+      memory: 512Mi
+
+    limits:
+      cpu: "1"
+      memory: 1Gi
+
+  startupProbe:
+    initialDelaySeconds: 10
+    periodSeconds: 5
+    failureThreshold: 30
+
+  readinessProbe:
+    initialDelaySeconds: 10
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+  livenessProbe:
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 3
+    failureThreshold: 3

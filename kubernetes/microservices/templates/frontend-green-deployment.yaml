@@ -9,20 +9,32 @@ spec:
 
   selector:
     matchLabels:
-      app: frontend
+      app: frontend-service
       version: green
 
   template:
     metadata:
       labels:
-        app: frontend
+        app: frontend-service
         version: green
 
     spec:
       containers:
-      - name: frontend
-
-        image: 658140043880.dkr.ecr.us-east-2.amazonaws.com/frontend-service:v2
+      - name: frontend-container
+        image: 230026708124.dkr.ecr.us-east-2.amazonaws.com/frontend-service:v2
 
         ports:
         - containerPort: 80
+
+        env:
+        - name: COURSE_API_URL
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: COURSE_API_URL
+
+        - name: STUDENT_API_URL
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: STUDENT_API_URL

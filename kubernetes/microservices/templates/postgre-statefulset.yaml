@@ -1,0 +1,123 @@
+apiVersion: apps/v1
+kind: StatefulSet
+
+metadata:
+  name: postgres
+
+spec:
+  serviceName: postgres
+
+  replicas: {{ .Values.postgres.replicas }}
+
+  selector:
+    matchLabels:
+      app: postgres
+
+  template:
+
+    metadata:
+      labels:
+        app: postgres
+
+    spec:
+
+      securityContext:
+        fsGroup: 999
+
+      containers:
+
+      - name: postgres
+
+        image: "{{ .Values.postgres.image.repository }}:{{ .Values.postgres.image.tag }}"
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+        - containerPort: {{ .Values.postgres.service.port }}
+
+        env:
+
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: POSTGRES_DB
+
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: POSTGRES_USER
+
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: POSTGRES_PASSWORD
+
+        volumeMounts:
+
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+
+        resources:
+
+          requests:
+            cpu: {{ .Values.postgres.resources.requests.cpu }}
+            memory: {{ .Values.postgres.resources.requests.memory }}
+
+          limits:
+            cpu: {{ .Values.postgres.resources.limits.cpu }}
+            memory: {{ .Values.postgres.resources.limits.memory }}
+
+        startupProbe:
+
+          tcpSocket:
+            port: {{ .Values.postgres.service.port }}
+
+          initialDelaySeconds: {{ .Values.postgres.startupProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.postgres.startupProbe.periodSeconds }}
+          failureThreshold: {{ .Values.postgres.startupProbe.failureThreshold }}
+
+        readinessProbe:
+
+          exec:
+            command:
+            - pg_isready
+            - -U
+            - {{ .Values.postgres.username }}
+
+          initialDelaySeconds: {{ .Values.postgres.readinessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.postgres.readinessProbe.periodSeconds }}
+          timeoutSeconds: {{ .Values.postgres.readinessProbe.timeoutSeconds }}
+          failureThreshold: {{ .Values.postgres.readinessProbe.failureThreshold }}
+
+        livenessProbe:
+
+          exec:
+            command:
+            - pg_isready
+            - -U
+            - {{ .Values.postgres.username }}
+
+          initialDelaySeconds: {{ .Values.postgres.livenessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.postgres.livenessProbe.periodSeconds }}
+          timeoutSeconds: {{ .Values.postgres.livenessProbe.timeoutSeconds }}
+          failureThreshold: {{ .Values.postgres.livenessProbe.failureThreshold }}
+
+  volumeClaimTemplates:
+
+  - metadata:
+      name: postgres-storage
+
+    spec:
+
+      accessModes:
+      - ReadWriteOnce
+
+      storageClassName: {{ .Values.postgres.storage.storageClass }}
+
+      resources:
+
+        requests:
+          storage: {{ .Values.postgres.storage.size }}
