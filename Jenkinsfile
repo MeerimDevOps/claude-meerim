@@ -46,15 +46,19 @@ pipeline {
         }
 stage('SonarQube Analysis') {
     steps {
-        withSonarQubeEnv('SonarQube') {
-            dir('backend_service') {
-                sh '''
-                    sonar-scanner \
-                    -Dsonar.projectKey=claude-meerim \
-                    -Dsonar.projectName=claude-meerim \
-                    -Dsonar.sources=. \
-                    -Dsonar.exclusions=node_modules/**
-                '''
+        script {
+            def scannerHome = tool 'SonarScanner'
+
+            withSonarQubeEnv('SonarQube') {
+                dir('backend_service') {
+                    sh """
+                        ${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.projectKey=claude-meerim \
+                        -Dsonar.projectName=claude-meerim \
+                        -Dsonar.sources=. \
+                        -Dsonar.exclusions=node_modules/**
+                    """
+                }
             }
         }
     }
