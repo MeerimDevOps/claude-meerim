@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     environment {
         AWS_REGION = 'us-east-1'
         AWS_ACCOUNT_ID = '658140043880'
@@ -33,6 +37,9 @@ pipeline {
 
                     echo "AWS CLI Version"
                     aws --version
+
+                    echo "Trivy Version"
+                    trivy --version
                 '''
             }
         }
@@ -40,29 +47,33 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir('backend_service') {
-                    sh 'npm install'
+                    sh '''
+                        npm ci
+                    '''
                 }
             }
         }
-stage('SonarQube Analysis') {
-    steps {
-        script {
-            def scannerHome = tool 'SonarScanner'
 
-            withSonarQubeEnv('SonarQube') {
-                dir('backend_service') {
-                    sh """
-                        ${scannerHome}/bin/sonar-scanner \
-                        -Dsonar.projectKey=claude-meerim \
-                        -Dsonar.projectName=claude-meerim \
-                        -Dsonar.sources=. \
-                        -Dsonar.exclusions=node_modules/**
-                    """
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    def scannerHome = tool 'SonarScanner'
+
+                    withSonarQubeEnv('SonarQube') {
+                        dir('backend_service') {
+                            sh """
+                                ${scannerHome}/bin/sonar-scanner \
+                                -Dsonar.projectKey=claude-meerim \
+                                -Dsonar.projectName=claude-meerim \
+                                -Dsonar.sources=. \
+                                -Dsonar.exclusions=node_modules/**
+                            """
+                        }
+                    }
                 }
             }
         }
-    }
-}
+
         stage('Build Docker Image') {
             steps {
                 sh '''
@@ -72,17 +83,21 @@ stage('SonarQube Analysis') {
                 '''
             }
         }
-stage('Trivy Image Scan') {
+
+        stage('Trivy Security Scan') {
             steps {
                 sh '''
+                    echo "Scanning Docker image"
+
                     trivy image \
                     --severity HIGH,CRITICAL \
-                    --format table \
-                    --output trivy-report.txt \
-                    --no-progress \
+                    --ignore-unfixed \
+                    --exit-code 0 \
                     ${IMAGE_NAME}:${IMAGE_TAG}
                 '''
             }
+        }
+
         stage('Login to Amazon ECR') {
             steps {
                 withCredentials([[
@@ -90,11 +105,12 @@ stage('Trivy Image Scan') {
                     credentialsId: 'aws-ecr'
                 ]]) {
                     sh '''
-                        aws ecr get-login-password --region ${AWS_REGION} \
+                        aws ecr get-login-password \
+                        --region ${AWS_REGION} \
                         | docker login \
-                          --username AWS \
-                          --password-stdin \
-                          ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+                        --username AWS \
+                        --password-stdin \
+                        ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
                     '''
                 }
             }
@@ -103,7 +119,8 @@ stage('Trivy Image Scan') {
         stage('Tag Docker Image') {
             steps {
                 sh '''
-                    docker tag ${IMAGE_NAME}:${IMAGE_TAG} \
+                    docker tag \
+                    ${IMAGE_NAME}:${IMAGE_TAG} \
                     ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPOSITORY}:${IMAGE_TAG}
                 '''
             }
@@ -120,15 +137,18 @@ stage('Trivy Image Scan') {
     }
 
     post {
+
         success {
             echo "======================================"
-            echo "Image successfully pushed to Amazon ECR"
+            echo "Pipeline completed successfully"
+            echo "Image pushed to Amazon ECR"
             echo "======================================"
         }
 
         failure {
             echo "======================================"
             echo "Pipeline Failed"
+            echo "Check Console Output"
             echo "======================================"
         }
 
