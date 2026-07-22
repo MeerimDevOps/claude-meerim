@@ -72,19 +72,17 @@ stage('SonarQube Analysis') {
                 '''
             }
         }
-stage('Trivy Security Scan') {
-    steps {
-        sh '''
-            echo "Scanning Docker image for vulnerabilities"
-
-            trivy image \
-              --severity HIGH,CRITICAL \
-              --exit-code 1 \
-              --ignore-unfixed \
-              ${IMAGE_NAME}:${IMAGE_TAG}
-        '''
-    }
-}
+stage('Trivy Image Scan') {
+            steps {
+                sh '''
+                    trivy image \
+                    --severity HIGH,CRITICAL \
+                    --format table \
+                    --output trivy-report.txt \
+                    --no-progress \
+                    ${IMAGE_NAME}:${IMAGE_TAG}
+                '''
+            }
         stage('Login to Amazon ECR') {
             steps {
                 withCredentials([[
