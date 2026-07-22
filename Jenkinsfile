@@ -8,7 +8,7 @@ pipeline {
         IMAGE_NAME = 'claude-meerim'
         IMAGE_TAG = 'latest'
 
-        PATH = "/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:${env.PATH}"
+        PATH="/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:${env.PATH}"
     }
 
     stages {
@@ -22,8 +22,33 @@ pipeline {
         stage('Verify Tools') {
             steps {
                 sh '''
-                    docker --version
-                    aws --version
+                echo "Node Version"
+                node -v
+
+                echo "NPM Version"
+                npm -v
+
+                echo "Docker Version"
+                docker --version
+
+                echo "AWS CLI Version"
+                aws --version
+                '''
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh '''
+                npm install
+                '''
+            }
+        }
+
+        stage('Build Application') {
+            steps {
+                sh '''
+                npm run build
                 '''
             }
         }
@@ -31,7 +56,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh '''
-                    docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
+                docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
                 '''
             }
         }
@@ -42,11 +67,12 @@ pipeline {
                     $class: 'AmazonWebServicesCredentialsBinding',
                     credentialsId: 'aws-ecr'
                 ]]) {
+
                     sh '''
-                        aws ecr get-login-password --region ${AWS_REGION} \
-                        | docker login \
-                        --username AWS \
-                        --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+                    aws ecr get-login-password --region ${AWS_REGION} \
+                    | docker login \
+                      --username AWS \
+                      --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
                     '''
                 }
             }
@@ -55,8 +81,8 @@ pipeline {
         stage('Tag Docker Image') {
             steps {
                 sh '''
-                    docker tag ${IMAGE_NAME}:${IMAGE_TAG} \
-                    ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPOSITORY}:${IMAGE_TAG}
+                docker tag ${IMAGE_NAME}:${IMAGE_TAG} \
+                ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPOSITORY}:${IMAGE_TAG}
                 '''
             }
         }
@@ -64,20 +90,26 @@ pipeline {
         stage('Push Image to Amazon ECR') {
             steps {
                 sh '''
-                    docker push \
-                    ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPOSITORY}:${IMAGE_TAG}
+                docker push \
+                ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPOSITORY}:${IMAGE_TAG}
                 '''
             }
         }
+
     }
 
     post {
+
         success {
-            echo 'Image successfully pushed to Amazon ECR'
+            echo "======================================"
+            echo "Image successfully pushed to Amazon ECR"
+            echo "======================================"
         }
 
         failure {
-            echo 'Pipeline Failed'
+            echo "======================================"
+            echo "Pipeline Failed"
+            echo "======================================"
         }
 
         always {
