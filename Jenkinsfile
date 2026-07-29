@@ -1,5 +1,7 @@
 pipeline {
-    perm-agent
+    agent {
+        label 'perm-agent'
+    }
 
     options {
         skipDefaultCheckout(true)
