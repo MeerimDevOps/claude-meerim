@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    perm-agent
 
     options {
         skipDefaultCheckout(true)
